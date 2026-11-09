@@ -24,14 +24,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.to_dolistapp.R
 import com.example.to_dolistapp.ui.theme.Primary_Purple
-import com.example.to_dolistapp.ui.theme.Subtitle
+import com.example.to_dolistapp.ui.theme.SecondaryText
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(onNavHost:()-> Unit)
 {
     LaunchedEffect(true) {
-        delay(500L)
+        delay(1000L)
         onNavHost()
     }
 
@@ -56,7 +56,7 @@ fun SplashScreen(onNavHost:()-> Unit)
                 Text("Task", fontSize = 48.sp, fontWeight = FontWeight.Bold, color = Color.Black)
                 Text("Flow", fontSize = 48.sp, fontWeight = FontWeight.Bold, color = Primary_Purple)
             }
-            Text("Plan your day. Achieve more", fontSize = 16.sp, color = Subtitle)
+            Text("Plan your day. Achieve more", fontSize = 16.sp, color = SecondaryText)
 
             Spacer(modifier = Modifier.height(30.dp))
 

@@ -9,7 +9,5 @@ import androidx.compose.ui.Modifier
 @Composable
 fun HomeScreen()
 {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text("Home")
-    }
+
 }

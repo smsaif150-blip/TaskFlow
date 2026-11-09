@@ -9,9 +9,28 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
-val Primary_Purple = Color(0XFF6038D8)
-val Deep_Purple = Color(0XFF4020A8)
-val Card_Background = Color(0XFFEDE7FF)
-val Dark_Text= Color(0XFF171B45)
-val Screen_Background = Color(0XFFF8F7FF	)
-val Subtitle = Color(0XFF666B8A)
+
+
+
+
+// Primary Purple
+val Primary_Purple = Color(0xFF4929AD)
+val DeepPurple = Color(0xFF3A2193)//header gradient
+val AccentPurple = Color(0xFF6D43F5)//button icons
+
+// Light Purple
+val LightPurple = Color(0xFFECE6FC)//selected card
+val Lavender = Color(0xFFF6F3FD)//background
+val BorderPurple = Color(0xFFDCD0F7)//card border
+
+// Neutral
+val BackgroundWhite = Color(0XFFFDFDFD)
+val White = Color(0xFFFFFFFF)//cards
+val DarkText = Color(0xFF17133B)//Main text
+val SecondaryText = Color(0xFF696287)//subtitle
+val DisabledGray = Color(0xFFA9A2BD)//completed task
+
+// Status
+val SuccessGreen = Color(0xFF35C77B)//completed
+val WarningOrange = Color(0xFFFFB52E)//medium priority
+val ErrorRed = Color(0xFFF04438)//High priority
