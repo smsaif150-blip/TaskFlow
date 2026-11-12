@@ -11,12 +11,26 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 
+val PrimaryPurple = Color(0xFF5E35B1) // হেডার এবং মেইন ব্যাকগ্রাউন্ড থিম কালার
+val HeaderGradientEnd = Color(0xFF7E57C2) // হেডার গ্রadients বা কার্ডের পেছনের অংশ
+val SurfaceWhite = Color(0xFFFFFFFF) // অ্যাপের মেইন ব্যাকগ্রাউন্ড ও কার্ড ব্যাকগ্রাউন্ড
+val CardBackground = Color(0xFFF8F6FF) // টাস্ক কার্ডগুলোর হালকা পার্পল ব্যাকগ্রাউন্ড
+val TextPrimary = Color(0xFF221F36) // মূল টেক্সট ও টাইটেল কালার
+val TextSecondary = Color(0xFF757575) // সাব-টাইটেল বা ছোট লেখার কালার
+val AccentPurple = Color(0xFF6D43F5) // plus button,selected Icon, chips background
+val ChipUnselected = Color(0xFFF0EDFF) // আনসিলেক্টেড ক্যাটাগরি চিপস ব্যাকগ্রাউন্ড
+val StatusTotal = Color(0xFF3F51B5) // টোটাল স্ট্যাটাস আইকন কালার
+val StatusCompleted = Color(0xFF4CAF50) // কমপ্লিটেড স্ট্যাটাস (সবুজ)
+val StatusPending = Color(0xFFFF9800) // পেন্ডিং স্ট্যাটাস (হলুদ/কমলা)
+val StatusOverdue = Color(0xFFE53935) // ওভারডিউ স্ট্যাটাস (লাল)
+val DividerColor = Color(0xFFE0D8F0) // বর্ডার ও ডিভাইডার লাইন কালার
+
 
 
 // Primary Purple
 val Primary_Purple = Color(0xFF4929AD)
 val DeepPurple = Color(0xFF3A2193)//header gradient
-val AccentPurple = Color(0xFF6D43F5)//button icons
+
 
 // Light Purple
 val LightPurple = Color(0xFFECE6FC)//selected card

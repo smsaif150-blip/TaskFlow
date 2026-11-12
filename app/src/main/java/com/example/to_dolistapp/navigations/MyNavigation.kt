@@ -47,8 +47,6 @@ fun MyNavigation()
 
                 }
             }
-
-
         }
     ) {innerPadding->
 
