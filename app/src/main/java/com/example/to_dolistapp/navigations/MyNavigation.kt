@@ -14,9 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -35,6 +33,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 
 import androidx.navigation.compose.rememberNavController
 import com.example.to_dolistapp.R
+import com.example.to_dolistapp.screens.AddTaskScreen
 import com.example.to_dolistapp.screens.HomeScreen
 import com.example.to_dolistapp.screens.SplashScreen
 import com.example.to_dolistapp.ui.theme.PrimaryPurple
@@ -115,7 +114,9 @@ fun MyNavigation()
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
 
-                        FloatingActionButton(onClick = {},
+                        FloatingActionButton(onClick = {
+                            navController.navigate("addTask")
+                        },
                             shape = CircleShape,
                             containerColor = PrimaryPurple
                         ) {
@@ -179,8 +180,8 @@ fun MyNavigation()
         NavHost(
             navController = navController,
             startDestination = "splash",
-//            enterTransition = { EnterTransition.None},
-//            exitTransition = { ExitTransition.None}
+            enterTransition = { EnterTransition.None},
+            exitTransition = { ExitTransition.None},
             modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())
         ) {
             composable("splash")
@@ -198,6 +199,10 @@ fun MyNavigation()
             composable("home")
             {
                 HomeScreen()
+            }
+            composable("addTask")
+            {
+                AddTaskScreen()
             }
         }
     }
