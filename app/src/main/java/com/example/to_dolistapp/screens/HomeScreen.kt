@@ -15,14 +15,19 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -32,7 +37,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -41,8 +45,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.to_dolistapp.R
-import com.example.to_dolistapp.ui.theme.DeepPurple
 import com.example.to_dolistapp.ui.theme.DividerColor
+import com.example.to_dolistapp.ui.theme.HeaderGradientEnd
 import com.example.to_dolistapp.ui.theme.Lavender
 import com.example.to_dolistapp.ui.theme.PrimaryPurple
 import com.example.to_dolistapp.ui.theme.Primary_Purple
@@ -50,12 +54,18 @@ import com.example.to_dolistapp.ui.theme.SecondaryText
 import com.example.to_dolistapp.ui.theme.StatusPending
 import com.example.to_dolistapp.ui.theme.SuccessGreen
 import com.example.to_dolistapp.ui.theme.SurfaceWhite
+import com.example.to_dolistapp.ui.theme.TextSecondary
 import com.example.to_dolistapp.ui.theme.White
+import com.example.to_dolistapp.utils.CatetegoryData
+import com.example.to_dolistapp.utils.dummyData
 
 @Composable
 fun HomeScreen()
 {
 
+
+    val CategoryItem = CatetegoryData()
+    val cardItems = dummyData()
 
     Scaffold { innerpadding->
 
@@ -66,7 +76,7 @@ fun HomeScreen()
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                Primary_Purple,DeepPurple
+                                Primary_Purple, HeaderGradientEnd
                             )
                         ),
                         shape = RoundedCornerShape(bottomStart = 15.dp, bottomEnd = 15.dp)
@@ -239,12 +249,94 @@ fun HomeScreen()
                 Spacer(modifier = Modifier.padding(horizontal = 8.dp))
             }
 
+            Spacer(modifier = Modifier.padding(vertical = 6.dp))
 
-            Row {
+            LazyRow(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = 8.dp, end = 16.dp )
+
+            ) {
+                items(CategoryItem){ item->
+                    Spacer(modifier = Modifier.padding(start = 8.dp))
+                    Box(modifier = Modifier.wrapContentWidth().height(40.dp)
+                        .background(PrimaryPurple.copy(alpha = 0.05f), shape = RoundedCornerShape(20.dp))
+                        .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(20.dp))
+                        .padding(horizontal = 10.dp),
+                        contentAlignment = Alignment.Center)
+                    {
+                        Row() {
+
+                            Image(painter = painterResource(item.image), contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                                colorFilter = ColorFilter.tint(PrimaryPurple))
+
+                            Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                            Text(item.name, fontSize = 15.sp,
+                                color = Primary_Purple,
+                                fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth().height(400.dp)
+            ) {
+             items(cardItems){ item->
+
+                 Card(modifier = Modifier.fillMaxWidth()
+                     .padding(start = 16.dp, end = 16.dp)
+                     .height(80.dp),
+                     colors = CardDefaults.cardColors(White),
+                     elevation = CardDefaults.cardElevation(2.dp)
+                 )
+                 {
+                     Row(modifier = Modifier.fillMaxSize(),
+                         verticalAlignment = Alignment.CenterVertically) {
+                         Box(
+                             modifier = Modifier.fillMaxHeight().width(4.dp)
+                                 .background(color = Primary_Purple)
+                         )
+
+                         Checkbox(
+                             checked = false,
+                             onCheckedChange = {
+                             },
+                             colors = CheckboxDefaults.colors(
+                                 uncheckedColor = Primary_Purple,
+                                 checkedColor = Primary_Purple,
+                                 checkmarkColor = White
+                             )
+                         )
+
+                         Column() {
+                             Text(item.title, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+
+                                 Row(verticalAlignment = Alignment.CenterVertically) {
+                                     Image(painter = painterResource(item.image),
+                                         contentDescription = "work",
+                                         colorFilter = ColorFilter.tint(PrimaryPurple),
+                                         modifier = Modifier.size(12.dp)
+                                         )
+                                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                                     Text(item.category, color = TextSecondary, fontSize = 12.sp)
+                                 }
+
+                             Row(verticalAlignment = Alignment.CenterVertically) {
+                                 Image(painter = painterResource(R.drawable.calendar),
+                                     contentDescription = "calender",
+                                     modifier = Modifier.size(12.dp))
+                                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                                 Text(text = item.time, color = TextSecondary, fontSize = 12.sp)
+                             }
+                         }
+                     }
+                 }
+                 Spacer(modifier = Modifier.height(8.dp))
+             }
 
             }
         }
-
     }
 }
 
