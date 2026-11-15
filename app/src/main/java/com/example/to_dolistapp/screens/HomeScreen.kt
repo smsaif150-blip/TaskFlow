@@ -69,7 +69,7 @@ fun HomeScreen()
 
     Scaffold { innerpadding->
 
-        Column(modifier = Modifier.fillMaxSize().background(color = Lavender)) {
+        Column(modifier = Modifier.fillMaxSize().padding(innerpadding).background(color = Lavender)) {
 
             Box(
                 modifier = Modifier.fillMaxWidth().height(170.dp)
@@ -280,7 +280,7 @@ fun HomeScreen()
             Spacer(modifier = Modifier.height(16.dp))
 
             LazyColumn(
-                modifier = Modifier.fillMaxWidth().height(400.dp)
+                modifier = Modifier.fillMaxWidth().weight(1f)
             ) {
              items(cardItems){ item->
 
@@ -310,7 +310,7 @@ fun HomeScreen()
                          )
 
                          Column() {
-                             Text(item.title, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                             Text(item.title, fontSize = 16.sp, fontWeight = FontWeight.Bold)
 
                                  Row(verticalAlignment = Alignment.CenterVertically) {
                                      Image(painter = painterResource(item.image),
