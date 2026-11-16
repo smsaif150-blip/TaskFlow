@@ -224,7 +224,8 @@ fun HomeScreen()
                     contentAlignment = Alignment.CenterStart
                     )
                 {
-                    Icon(imageVector = Icons.Default.Search,null, modifier = Modifier.padding(start = 16.dp))
+                    Icon(imageVector = Icons.Default.Search,null,
+                        modifier = Modifier.padding(start = 16.dp))
                     Text(
                         "Search tasks...",
                         modifier = Modifier.padding(start = 48.dp),
@@ -251,7 +252,8 @@ fun HomeScreen()
 
             Spacer(modifier = Modifier.padding(vertical = 6.dp))
 
-            LazyRow(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = 8.dp, end = 16.dp )
+            LazyRow(verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(start = 8.dp, end = 16.dp )
 
             ) {
                 items(CategoryItem){ item->
