@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -50,11 +51,7 @@ fun MyNavigation()
 
     Scaffold(
         bottomBar = {
-            AnimatedVisibility(
-                visible = currentRoute=="home",
-                enter = fadeIn(),
-                exit = fadeOut()
-            ) {
+            if (currentRoute=="home") {
                 BottomAppBar(
                     modifier = Modifier.fillMaxWidth().clip(shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
                     containerColor = Color.White,
@@ -71,13 +68,7 @@ fun MyNavigation()
                     ){
 
                         Icon(painter = painterResource(R.drawable.home),null, tint =
-                            if (currentRoute=="home")
-                            {
-                                PrimaryPurple
-                            }
-                            else{
-                                TextSecondary
-                            }
+                            PrimaryPurple
                         )
 
                         Text("Home", fontSize = 12.sp)
@@ -182,7 +173,7 @@ fun MyNavigation()
             startDestination = "splash",
             enterTransition = { EnterTransition.None},
             exitTransition = { ExitTransition.None},
-            modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())
+           // modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())// for lazyColumn to show the top of Bottom bar
         ) {
             composable("splash")
             {
@@ -198,11 +189,15 @@ fun MyNavigation()
             }
             composable("home")
             {
-                HomeScreen()
+                Box(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()))
+                {
+                    HomeScreen()
+                }
+
             }
             composable("addTask")
             {
-                AddTaskScreen()
+                AddTaskScreen(navController)
             }
         }
     }

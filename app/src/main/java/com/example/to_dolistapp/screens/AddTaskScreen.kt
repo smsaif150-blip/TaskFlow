@@ -55,6 +55,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.to_dolistapp.R
 import com.example.to_dolistapp.ui.theme.DividerColor
 import com.example.to_dolistapp.ui.theme.ErrorRed
@@ -71,7 +72,7 @@ import com.example.to_dolistapp.utils.CatetegoryData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTaskScreen()
+fun AddTaskScreen(navController: NavController)
 {
 
     val CategoryItem = CatetegoryData()
@@ -114,9 +115,16 @@ fun AddTaskScreen()
                     horizontalArrangement = Arrangement.Start) {
 
 
-                    Icon(painter = painterResource(R.drawable.outline_arrow_back_24),
-                        contentDescription = null,
-                        tint = White)
+
+
+                    IconButton(onClick = {
+                        navController.popBackStack()
+                    }) {
+
+                        Icon(painter = painterResource(R.drawable.outline_arrow_back_24),
+                            contentDescription = null,
+                            tint = White)
+                    }
 
                     Text("Add Task", fontSize = 24.sp, color = White, modifier = Modifier.padding(start = 16.dp))
 
@@ -453,7 +461,6 @@ fun AddTaskScreen()
                             )
 
                             Spacer(modifier = Modifier.padding(horizontal = 8.dp))
-
                         }
                     }
 
@@ -493,9 +500,9 @@ fun AddTaskScreen()
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun showTaskScreen()
-{
-    AddTaskScreen()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun showTaskScreen()
+//{
+//    AddTaskScreen()
+//}
