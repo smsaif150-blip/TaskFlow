@@ -37,12 +37,18 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -85,6 +91,10 @@ fun AddTaskScreen()
             )
         }*/
     ) { innerpadding->
+
+        var isReminderEnabled by remember {
+            mutableStateOf(false)
+        }
 
         Column(modifier = Modifier.padding(innerpadding).background(color = Lavender)) {
             Box(
@@ -412,19 +422,41 @@ fun AddTaskScreen()
                         .background(color = Primary_Purple.copy(alpha = 0.15f), shape = RoundedCornerShape(16.dp))
                         .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(16.dp)))
                     {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(modifier = Modifier.size(24.dp)
+                        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxSize()) {
+                            Spacer(modifier = Modifier.padding(start = 12.dp))
+                            Box(modifier = Modifier.size(32.dp)
                                 .background(color = Primary_Purple.copy(alpha = 0.15f),
                                     shape = CircleShape
                                 ),
                                 contentAlignment = Alignment.Center)
                             {
                                 Icon(painter = painterResource(R.drawable.notification),null,
-                                    tint = Primary_Purple)
-
+                                    tint = Primary_Purple, modifier = Modifier.size(20.dp))
                             }
+
+
+                            Text(
+                                "Set Reminder",
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 16.dp)
+                                )
+
+
+                            Spacer(modifier = Modifier.weight(1f))
+
+                            Switch(
+                                checked = isReminderEnabled,
+                                onCheckedChange = {
+                                    isReminderEnabled = it
+                                }
+                            )
+
+                            Spacer(modifier = Modifier.padding(horizontal = 8.dp))
+
                         }
                     }
+
                     Spacer(modifier = Modifier.padding(vertical = 16.dp))
 
                 }
