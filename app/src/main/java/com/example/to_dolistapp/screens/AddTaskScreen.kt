@@ -56,6 +56,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.to_dolistapp.R
 import com.example.to_dolistapp.ui.theme.DividerColor
 import com.example.to_dolistapp.ui.theme.ErrorRed
@@ -375,7 +376,7 @@ fun AddTaskScreen(navController: NavController)
                         Row {
                             Row(verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
-                                modifier = Modifier.weight(1f)) {
+                                modifier = Modifier.weight(1f).clickable{}) {
 
                                 IconButton(onClick = {}) {
                                     Icon(painter = painterResource(R.drawable.calendar),
@@ -391,7 +392,7 @@ fun AddTaskScreen(navController: NavController)
 
                             Row(verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
-                                modifier = Modifier.weight(1f)) {
+                                modifier = Modifier.weight(1f).clickable{}) {
 
                                 IconButton(onClick = {}) {
                                     Icon(painter = painterResource(R.drawable.myclock),
@@ -500,9 +501,10 @@ fun AddTaskScreen(navController: NavController)
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun showTaskScreen()
-//{
-//    AddTaskScreen()
-//}
+@Preview(showBackground = true)
+@Composable
+fun showTaskScreen()
+{
+    val navController: NavController = rememberNavController()
+    AddTaskScreen(navController)
+}
