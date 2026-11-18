@@ -11,9 +11,9 @@ data class Task(
     val description: String = "",
     val category: String,
     val priority: String,
-    val isComplete: Boolean,
+    val isCompleted: Boolean,
     val dueDate: Long,
     val reminderTime: Long?,
     val createdAt: Long,
-    val updateAt: Long
+    val updatedAt: Long
 )

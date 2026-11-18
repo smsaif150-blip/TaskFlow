@@ -154,7 +154,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Task Title *",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
@@ -190,7 +190,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Description (Optional)",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
@@ -228,7 +228,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Category",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
@@ -277,7 +277,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Priority",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
@@ -361,7 +361,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Due Date",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
@@ -419,7 +419,7 @@ fun AddTaskScreen(navController: NavController)
                         }
 
                         Text("Reminder (Optional)",
-                            color = Primary_Purple, fontSize = 18.sp,
+                            color = Primary_Purple, fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(start = 12.dp))
                     }
