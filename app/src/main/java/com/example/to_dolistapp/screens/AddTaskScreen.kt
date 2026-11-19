@@ -141,25 +141,7 @@ fun AddTaskScreen(navController: NavController)
                 Column(modifier = Modifier.fillMaxSize()
                     .verticalScroll(rememberScrollState())) {
 
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 16.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                            Image(painter = painterResource(R.drawable.t),null,
-                                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(PrimaryPurple)
-                            )
-                        }
-
-                        Text("Task Title *",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
-
+                    HeaderSection("Task title *", R.drawable.t)
 
                     OutlinedTextField(
                         value = "",
@@ -177,24 +159,7 @@ fun AddTaskScreen(navController: NavController)
                         shape = RoundedCornerShape(15.dp)
                     )
 
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                            Image(painter = painterResource(R.drawable.menu),null,
-                                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(PrimaryPurple)
-                            )
-                        }
-
-                        Text("Description (Optional)",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
+                    HeaderSection("Description (Optional)",R.drawable.menu)
 
                     OutlinedTextField(value = "",
                         onValueChange = {},
@@ -213,26 +178,7 @@ fun AddTaskScreen(navController: NavController)
                         )
                         )
 
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                            Image(painter = painterResource(R.drawable.category),null,
-                                modifier = Modifier.size(28.dp),
-                                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(PrimaryPurple,
-                                    )
-                            )
-                        }
-
-                        Text("Category",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
+                    HeaderSection("Category",R.drawable.category)
 
                     LazyRow(verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(start = 8.dp, end = 16.dp, top =4.dp)
@@ -262,26 +208,7 @@ fun AddTaskScreen(navController: NavController)
                     }
 
 
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                            Image(painter = painterResource(R.drawable.star),null,
-                                modifier = Modifier.size(28.dp),
-                                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(PrimaryPurple,
-                                )
-                            )
-                        }
-
-                        Text("Priority",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
+                HeaderSection("Priority",R.drawable.star)
 
 
                     Row(modifier = Modifier.fillMaxWidth().height(40.dp).
@@ -345,27 +272,7 @@ fun AddTaskScreen(navController: NavController)
                         }
                     }
 
-
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                            Image(painter = painterResource(R.drawable.calendar),null,
-                                modifier = Modifier.size(20.dp),
-                                colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(PrimaryPurple,
-                                )
-                            )
-                        }
-
-                        Text("Due Date",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
+                    HeaderSection("Due Date",R.drawable.calendar)
 
 
                     Box(modifier = Modifier.fillMaxWidth().height(48.dp)
@@ -376,13 +283,19 @@ fun AddTaskScreen(navController: NavController)
                         Row {
                             Row(verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
-                                modifier = Modifier.weight(1f).clickable{}) {
+                                modifier = Modifier.weight(1f).fillMaxHeight().clickable{}) {
 
-                                IconButton(onClick = {}) {
-                                    Icon(painter = painterResource(R.drawable.calendar),
-                                        null, modifier = Modifier.size(20.dp))
-
+                                Box(modifier = Modifier.size(32.dp)
+                                    .background(color = Primary_Purple.copy(alpha = 0.15f),
+                                        shape = CircleShape
+                                    ),
+                                    contentAlignment = Alignment.Center)
+                                {
+                                    Icon(painter = painterResource(R.drawable.calendar),null,
+                                        tint = Primary_Purple, modifier = Modifier.size(20.dp))
                                 }
+
+                                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
 
                                 Text("Select Date", fontSize = 16.sp, color = SecondaryText)
 
@@ -392,38 +305,26 @@ fun AddTaskScreen(navController: NavController)
 
                             Row(verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.Center,
-                                modifier = Modifier.weight(1f).clickable{}) {
+                                modifier = Modifier.weight(1f).fillMaxHeight().clickable{}) {
 
-                                IconButton(onClick = {}) {
-                                    Icon(painter = painterResource(R.drawable.myclock),
-                                        null, modifier = Modifier.size(20.dp))
-
+                                Box(modifier = Modifier.size(32.dp)
+                                    .background(color = Primary_Purple.copy(alpha = 0.15f),
+                                        shape = CircleShape
+                                    ),
+                                    contentAlignment = Alignment.Center)
+                                {
+                                    Icon(painter = painterResource(R.drawable.myclock),null,
+                                        tint = Primary_Purple, modifier = Modifier.size(20.dp))
                                 }
 
-                                Text("Select time", fontSize = 16.sp, color = SecondaryText)
+                                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
 
+                                Text("Select time", fontSize = 16.sp, color = SecondaryText)
                             }
                         }
                     }
 
-                    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
-                        verticalAlignment = Alignment.CenterVertically) {
-                        Box(modifier = Modifier.size(40.dp)
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = CircleShape
-                            ),
-                            contentAlignment = Alignment.Center)
-                        {
-                           Icon(imageVector = Icons.Default.Notifications,null,
-                               tint = Primary_Purple)
-
-                        }
-
-                        Text("Reminder (Optional)",
-                            color = Primary_Purple, fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 12.dp))
-                    }
+                    HeaderSection("Reminder (Optional)", R.drawable.bell)
 
 
                     Box(modifier = Modifier.fillMaxWidth().height(48.dp)
@@ -473,7 +374,7 @@ fun AddTaskScreen(navController: NavController)
           Button(onClick = {},
               colors =ButtonDefaults.buttonColors(Primary_Purple),
               modifier = Modifier.fillMaxWidth().height(44.dp).padding(horizontal = 24.dp)) {
-              Row {
+              Row(verticalAlignment = Alignment.CenterVertically) {
                   Icon(imageVector = Icons.Default.Add,null, tint = White,
                       modifier = Modifier.padding(end = 8.dp))
                   Text("Add Task", fontSize = 16.sp, fontWeight = FontWeight.Bold)
@@ -500,6 +401,33 @@ fun AddTaskScreen(navController: NavController)
 
     }
 }
+
+
+
+@Composable
+fun HeaderSection(text: String,image: Int)
+{
+    Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
+        verticalAlignment = Alignment.CenterVertically) {
+        Box(modifier = Modifier.size(40.dp)
+            .background(color = Primary_Purple.copy(alpha = 0.15f),
+                shape = CircleShape
+            ),
+            contentAlignment = Alignment.Center)
+        {
+            Image(painter = painterResource(image),null,
+                colorFilter =ColorFilter.tint(PrimaryPurple),
+                modifier = Modifier.size(20.dp)
+            )
+        }
+
+        Text(text,
+            color = Primary_Purple, fontSize = 15.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = 12.dp))
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
