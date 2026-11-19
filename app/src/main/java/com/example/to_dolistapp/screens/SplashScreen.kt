@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.to_dolistapp.R
-import com.example.to_dolistapp.ui.theme.Primary_Purple
+import com.example.to_dolistapp.ui.theme.PrimaryPurple
 import com.example.to_dolistapp.ui.theme.SecondaryText
 import kotlinx.coroutines.delay
 
@@ -54,14 +54,14 @@ fun SplashScreen(onNavHost:()-> Unit)
 
             Row {
                 Text("Task", fontSize = 48.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-                Text("Flow", fontSize = 48.sp, fontWeight = FontWeight.Bold, color = Primary_Purple)
+                Text("Flow", fontSize = 48.sp, fontWeight = FontWeight.Bold, color = PrimaryPurple)
             }
             Text("Plan your day. Achieve more", fontSize = 16.sp, color = SecondaryText)
 
             Spacer(modifier = Modifier.height(30.dp))
 
             CircularProgressIndicator(
-                color = Primary_Purple,
+                color = PrimaryPurple,
                 trackColor = Color.LightGray,
                 modifier = Modifier.padding(top = 16.dp)
             )

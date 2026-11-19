@@ -25,12 +25,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -63,7 +61,6 @@ import com.example.to_dolistapp.ui.theme.ErrorRed
 import com.example.to_dolistapp.ui.theme.HeaderGradientEnd
 import com.example.to_dolistapp.ui.theme.Lavender
 import com.example.to_dolistapp.ui.theme.PrimaryPurple
-import com.example.to_dolistapp.ui.theme.Primary_Purple
 import com.example.to_dolistapp.ui.theme.SecondaryText
 import com.example.to_dolistapp.ui.theme.SuccessGreen
 import com.example.to_dolistapp.ui.theme.TextSecondary
@@ -78,20 +75,6 @@ fun AddTaskScreen(navController: NavController)
 
     val CategoryItem = CatetegoryData()
     Scaffold(
-     /*   topBar = {
-            TopAppBar(
-                title = {
-                    Text("Add Task", fontSize =28.sp, color = White)
-                },
-                modifier = Modifier.clip(shape = RoundedCornerShape(bottomStart = 20.dp, bottomEnd = 20.dp)),
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = PrimaryPurple),
-                navigationIcon = {
-                    IconButton(onClick = {}) {
-                        Icon(painter = painterResource(R.drawable.outline_arrow_back_24),null, tint = White)
-                    }
-                }
-            )
-        }*/
     ) { innerpadding->
 
         var isReminderEnabled by remember {
@@ -104,7 +87,7 @@ fun AddTaskScreen(navController: NavController)
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                Primary_Purple, HeaderGradientEnd
+                                PrimaryPurple, HeaderGradientEnd
                             )
                         ),
                         shape = RoundedCornerShape(bottomStart = 15.dp, bottomEnd = 15.dp)
@@ -153,7 +136,7 @@ fun AddTaskScreen(navController: NavController)
                             Text("Enter task title...", color = TextSecondary)
                         },
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = Primary_Purple,
+                            focusedBorderColor = PrimaryPurple,
                             unfocusedBorderColor = DividerColor
                         ),
                         shape = RoundedCornerShape(15.dp)
@@ -173,7 +156,7 @@ fun AddTaskScreen(navController: NavController)
                             )
                         },
                         colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = Primary_Purple,
+                            focusedBorderColor = PrimaryPurple,
                             unfocusedBorderColor = DividerColor
                         )
                         )
@@ -200,7 +183,7 @@ fun AddTaskScreen(navController: NavController)
 
                                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                                     Text(item.name, fontSize = 15.sp,
-                                        color = Primary_Purple,
+                                        color = PrimaryPurple,
                                         fontWeight = FontWeight.Bold)
                                 }
                             }
@@ -210,66 +193,16 @@ fun AddTaskScreen(navController: NavController)
 
                 HeaderSection("Priority",R.drawable.star)
 
-
                     Row(modifier = Modifier.fillMaxWidth().height(40.dp).
                     padding(start = 16.dp, end = 16.dp, top = 4.dp)) {
 
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight()
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = RoundedCornerShape(24.dp))
-                            .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
-                            .clickable{},
-                            contentAlignment = Alignment.Center)
-                        {
-                            Row(horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically) {
-                                Box(modifier = Modifier.size(12.dp).
-                                background(color = SuccessGreen, shape = CircleShape))
-
-                                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
-
-                                Text("Low", fontSize = 15.sp, color = Primary_Purple)
-                            }
-                        }
-                        Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight()
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = RoundedCornerShape(24.dp))
-                            .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
-                            .clickable{},
-                            contentAlignment = Alignment.Center)
-                        {
-                            Row(horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically) {
-                                Box(modifier = Modifier.size(12.dp).
-                                background(color = WarningOrange, shape = CircleShape))
-
-                                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
-
-                                Text("Medium", fontSize = 15.sp, color = Primary_Purple)
-                            }
-                        }
+                        Priority(Modifier.weight(1f),"Low",SuccessGreen)
 
                         Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                        Priority(Modifier.weight(1f),"Medium",WarningOrange)
 
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight()
-                            .background(color = Primary_Purple.copy(alpha = 0.15f),
-                                shape = RoundedCornerShape(24.dp))
-                            .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
-                            .clickable{},
-                            contentAlignment = Alignment.Center)
-                        {
-                            Row(horizontalArrangement = Arrangement.Center,
-                                verticalAlignment = Alignment.CenterVertically) {
-                                Box(modifier = Modifier.size(12.dp).
-                                background(color = ErrorRed, shape = CircleShape))
-
-                                Spacer(modifier = Modifier.padding(horizontal = 6.dp))
-
-                                Text("High", fontSize = 15.sp, color = Primary_Purple)
-                            }
-                        }
+                        Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                        Priority(Modifier.weight(1f),"High",ErrorRed)
                     }
 
                     HeaderSection("Due Date",R.drawable.calendar)
@@ -286,13 +219,13 @@ fun AddTaskScreen(navController: NavController)
                                 modifier = Modifier.weight(1f).fillMaxHeight().clickable{}) {
 
                                 Box(modifier = Modifier.size(32.dp)
-                                    .background(color = Primary_Purple.copy(alpha = 0.15f),
+                                    .background(color = PrimaryPurple.copy(alpha = 0.15f),
                                         shape = CircleShape
                                     ),
                                     contentAlignment = Alignment.Center)
                                 {
                                     Icon(painter = painterResource(R.drawable.calendar),null,
-                                        tint = Primary_Purple, modifier = Modifier.size(20.dp))
+                                        tint = PrimaryPurple, modifier = Modifier.size(20.dp))
                                 }
 
                                 Spacer(modifier = Modifier.padding(horizontal = 6.dp))
@@ -308,13 +241,13 @@ fun AddTaskScreen(navController: NavController)
                                 modifier = Modifier.weight(1f).fillMaxHeight().clickable{}) {
 
                                 Box(modifier = Modifier.size(32.dp)
-                                    .background(color = Primary_Purple.copy(alpha = 0.15f),
+                                    .background(color = PrimaryPurple.copy(alpha = 0.15f),
                                         shape = CircleShape
                                     ),
                                     contentAlignment = Alignment.Center)
                                 {
                                     Icon(painter = painterResource(R.drawable.myclock),null,
-                                        tint = Primary_Purple, modifier = Modifier.size(20.dp))
+                                        tint = PrimaryPurple, modifier = Modifier.size(20.dp))
                                 }
 
                                 Spacer(modifier = Modifier.padding(horizontal = 6.dp))
@@ -329,19 +262,19 @@ fun AddTaskScreen(navController: NavController)
 
                     Box(modifier = Modifier.fillMaxWidth().height(48.dp)
                         .padding(start = 16.dp, end = 16.dp, top = 4.dp)
-                        .background(color = Primary_Purple.copy(alpha = 0.15f), shape = RoundedCornerShape(16.dp))
+                        .background(color = PrimaryPurple.copy(alpha = 0.15f), shape = RoundedCornerShape(16.dp))
                         .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(16.dp)))
                     {
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxSize()) {
                             Spacer(modifier = Modifier.padding(start = 12.dp))
                             Box(modifier = Modifier.size(32.dp)
-                                .background(color = Primary_Purple.copy(alpha = 0.15f),
+                                .background(color = PrimaryPurple.copy(alpha = 0.15f),
                                     shape = CircleShape
                                 ),
                                 contentAlignment = Alignment.Center)
                             {
                                 Icon(painter = painterResource(R.drawable.notification),null,
-                                    tint = Primary_Purple, modifier = Modifier.size(20.dp))
+                                    tint = PrimaryPurple, modifier = Modifier.size(20.dp))
                             }
 
 
@@ -372,7 +305,7 @@ fun AddTaskScreen(navController: NavController)
             }
 
           Button(onClick = {},
-              colors =ButtonDefaults.buttonColors(Primary_Purple),
+              colors =ButtonDefaults.buttonColors(PrimaryPurple),
               modifier = Modifier.fillMaxWidth().height(44.dp).padding(horizontal = 24.dp)) {
               Row(verticalAlignment = Alignment.CenterVertically) {
                   Icon(imageVector = Icons.Default.Add,null, tint = White,
@@ -384,21 +317,6 @@ fun AddTaskScreen(navController: NavController)
             Spacer(modifier = Modifier.padding(top = 16.dp))
 
         }
-        
-//        Column(modifier = Modifier.fillMaxSize().background(color = Lavender)
-//            .padding(innerpadding)) {
-//            Card(modifier = Modifier.weight(1f).padding(16.dp),
-//                colors = CardDefaults.cardColors(White)
-//                ) {
-//
-//            }
-//
-//            Button(onClick = {},
-//                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
-//
-//            }
-//        }
-
     }
 }
 
@@ -410,7 +328,7 @@ fun HeaderSection(text: String,image: Int)
     Row(modifier = Modifier.padding(start = 16.dp, top = 10.dp),
         verticalAlignment = Alignment.CenterVertically) {
         Box(modifier = Modifier.size(40.dp)
-            .background(color = Primary_Purple.copy(alpha = 0.15f),
+            .background(color = PrimaryPurple.copy(alpha = 0.15f),
                 shape = CircleShape
             ),
             contentAlignment = Alignment.Center)
@@ -422,9 +340,31 @@ fun HeaderSection(text: String,image: Int)
         }
 
         Text(text,
-            color = Primary_Purple, fontSize = 15.sp,
+            color = PrimaryPurple, fontSize = 15.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 12.dp))
+    }
+}
+
+@Composable
+fun Priority(modifier: Modifier,text: String,color: Color)
+{
+    Box(modifier = modifier.fillMaxHeight()
+        .background(color = PrimaryPurple.copy(alpha = 0.15f),
+            shape = RoundedCornerShape(24.dp))
+        .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
+        .clickable{},
+        contentAlignment = Alignment.Center)
+    {
+        Row(horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically) {
+            Box(modifier = Modifier.size(12.dp).
+            background(color = color, shape = CircleShape))
+
+            Spacer(modifier = Modifier.padding(horizontal = 6.dp))
+
+            Text(text, fontSize = 15.sp, color = PrimaryPurple)
+        }
     }
 }
 

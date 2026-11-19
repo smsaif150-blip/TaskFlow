@@ -49,7 +49,6 @@ import com.example.to_dolistapp.ui.theme.DividerColor
 import com.example.to_dolistapp.ui.theme.HeaderGradientEnd
 import com.example.to_dolistapp.ui.theme.Lavender
 import com.example.to_dolistapp.ui.theme.PrimaryPurple
-import com.example.to_dolistapp.ui.theme.Primary_Purple
 import com.example.to_dolistapp.ui.theme.SecondaryText
 import com.example.to_dolistapp.ui.theme.StatusPending
 import com.example.to_dolistapp.ui.theme.SuccessGreen
@@ -76,7 +75,7 @@ fun HomeScreen()
                     .background(
                         brush = Brush.linearGradient(
                             colors = listOf(
-                                Primary_Purple, HeaderGradientEnd
+                                PrimaryPurple, HeaderGradientEnd
                             )
                         ),
                         shape = RoundedCornerShape(bottomStart = 15.dp, bottomEnd = 15.dp)
@@ -238,7 +237,7 @@ fun HomeScreen()
 
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                 Box(modifier = Modifier.size(40.dp)
-                    .background(color = Primary_Purple.copy(alpha = 0.18f),
+                    .background(color = PrimaryPurple.copy(alpha = 0.18f),
                         shape = RoundedCornerShape(30.dp)),
                     contentAlignment = Alignment.Center
                 )
@@ -272,7 +271,7 @@ fun HomeScreen()
 
                             Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                             Text(item.name, fontSize = 15.sp,
-                                color = Primary_Purple,
+                                color = PrimaryPurple,
                                 fontWeight = FontWeight.Bold)
                         }
                     }
@@ -297,7 +296,7 @@ fun HomeScreen()
                          verticalAlignment = Alignment.CenterVertically) {
                          Box(
                              modifier = Modifier.fillMaxHeight().width(4.dp)
-                                 .background(color = Primary_Purple)
+                                 .background(color = PrimaryPurple)
                          )
 
                          Checkbox(
@@ -305,8 +304,8 @@ fun HomeScreen()
                              onCheckedChange = {
                              },
                              colors = CheckboxDefaults.colors(
-                                 uncheckedColor = Primary_Purple,
-                                 checkedColor = Primary_Purple,
+                                 uncheckedColor = PrimaryPurple,
+                                 checkedColor = PrimaryPurple,
                                  checkmarkColor = White
                              )
                          )

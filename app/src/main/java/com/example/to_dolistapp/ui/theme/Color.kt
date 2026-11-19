@@ -28,7 +28,7 @@ val DividerColor = Color(0xFFE0D8F0) // বর্ডার ও ডিভাই�
 
 
 // Primary Purple
-val Primary_Purple = Color(0xFF4929AD)
+
 val DeepPurple = Color(0xFF3A2193)//header gradient
 
 
