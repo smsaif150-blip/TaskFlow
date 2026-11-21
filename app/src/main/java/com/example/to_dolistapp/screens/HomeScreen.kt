@@ -55,7 +55,7 @@ import com.example.to_dolistapp.ui.theme.SuccessGreen
 import com.example.to_dolistapp.ui.theme.SurfaceWhite
 import com.example.to_dolistapp.ui.theme.TextSecondary
 import com.example.to_dolistapp.ui.theme.White
-import com.example.to_dolistapp.utils.CatetegoryData
+import com.example.to_dolistapp.utils.CategoryData
 import com.example.to_dolistapp.utils.dummyData
 
 @Composable
@@ -63,7 +63,7 @@ fun HomeScreen()
 {
 
 
-    val CategoryItem = CatetegoryData()
+    val CategoryItem = CategoryData()
     val cardItems = dummyData()
 
     Scaffold { innerpadding->

@@ -66,14 +66,18 @@ import com.example.to_dolistapp.ui.theme.SuccessGreen
 import com.example.to_dolistapp.ui.theme.TextSecondary
 import com.example.to_dolistapp.ui.theme.WarningOrange
 import com.example.to_dolistapp.ui.theme.White
-import com.example.to_dolistapp.utils.CatetegoryData
+import com.example.to_dolistapp.utils.CategoryData
+import com.example.to_dolistapp.utils.Collections.HIGH
+import com.example.to_dolistapp.utils.Collections.LOW
+import com.example.to_dolistapp.utils.Collections.MEDIUM
+import com.example.to_dolistapp.viewmodel.AddTaskViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddTaskScreen(navController: NavController)
+fun AddTaskScreen(navController: NavController,viewModel: AddTaskViewModel)
 {
 
-    val CategoryItem = CatetegoryData()
+    val CategoryItem = CategoryData()
     Scaffold(
     ) { innerpadding->
 
@@ -146,8 +150,9 @@ fun AddTaskScreen(navController: NavController)
 
                     OutlinedTextField(value = "",
                         onValueChange = {},
-                        modifier = Modifier.fillMaxWidth().height(100.dp)
-                            .padding(start = 16.dp, end = 16.dp, top = 4.dp),
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(start = 16.dp, end = 16.dp, top = 4.dp)
+                            .height(100.dp),
                         shape = RoundedCornerShape(12.dp),
                         placeholder = {
                             Text("Enter task description",
@@ -168,22 +173,43 @@ fun AddTaskScreen(navController: NavController)
 
                     ) {
                         items(CategoryItem){ item->
+
+                            val isSelected = item.name == viewModel.selectedCategory
+
                             Spacer(modifier = Modifier.padding(start = 8.dp))
                             Box(modifier = Modifier.wrapContentWidth().height(40.dp)
-                                .background(PrimaryPurple.copy(alpha = 0.05f), shape = RoundedCornerShape(20.dp))
+                                .background(
+                                    if (isSelected)
+                                    {
+                                        PrimaryPurple
+                                    }else
+                                    PrimaryPurple.copy(alpha = 0.05f), shape = RoundedCornerShape(20.dp)
+                                )
                                 .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(20.dp))
-                                .padding(horizontal = 10.dp),
+                                .padding(horizontal = 10.dp)
+                                .clickable{
+                                    viewModel.onCategoryChange(item.name)
+                                },
                                 contentAlignment = Alignment.Center)
                             {
                                 Row() {
 
                                     Image(painter = painterResource(item.image), contentDescription = null,
                                         modifier = Modifier.size(20.dp),
-                                        colorFilter = ColorFilter.tint(PrimaryPurple))
+                                        colorFilter =
+                                            if (isSelected){
+                                                ColorFilter.tint(White)
+                                            }else
+                                            ColorFilter.tint(PrimaryPurple))
 
                                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))
                                     Text(item.name, fontSize = 15.sp,
-                                        color = PrimaryPurple,
+                                        color =
+                                            if (isSelected)
+                                            {
+                                                White
+                                            }else
+                                            PrimaryPurple,
                                         fontWeight = FontWeight.Bold)
                                 }
                             }
@@ -195,14 +221,13 @@ fun AddTaskScreen(navController: NavController)
 
                     Row(modifier = Modifier.fillMaxWidth().height(40.dp).
                     padding(start = 16.dp, end = 16.dp, top = 4.dp)) {
-
-                        Priority(Modifier.weight(1f),"Low",SuccessGreen)
-
-                        Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                        Priority(Modifier.weight(1f),"Medium",WarningOrange)
+                        Priority(Modifier.weight(1f),LOW,SuccessGreen)
 
                         Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                        Priority(Modifier.weight(1f),"High",ErrorRed)
+                        Priority(Modifier.weight(1f),MEDIUM,WarningOrange)
+
+                        Spacer(modifier = Modifier.padding(horizontal = 4.dp))
+                        Priority(Modifier.weight(1f),HIGH,ErrorRed)
                     }
 
                     HeaderSection("Due Date",R.drawable.calendar)
@@ -349,11 +374,14 @@ fun HeaderSection(text: String,image: Int)
 @Composable
 fun Priority(modifier: Modifier,text: String,color: Color)
 {
+
     Box(modifier = modifier.fillMaxHeight()
         .background(color = PrimaryPurple.copy(alpha = 0.15f),
             shape = RoundedCornerShape(24.dp))
         .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
-        .clickable{},
+        .clickable{
+
+        },
         contentAlignment = Alignment.Center)
     {
         Row(horizontalArrangement = Arrangement.Center,
@@ -368,11 +396,11 @@ fun Priority(modifier: Modifier,text: String,color: Color)
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun showTaskScreen()
-{
-    val navController: NavController = rememberNavController()
-    AddTaskScreen(navController)
-}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun showTaskScreen()
+//{
+//    val navController: NavController = rememberNavController()
+//    AddTaskScreen(navController)
+//}

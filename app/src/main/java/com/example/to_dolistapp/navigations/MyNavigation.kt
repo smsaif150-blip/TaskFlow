@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -40,11 +41,13 @@ import com.example.to_dolistapp.screens.SplashScreen
 import com.example.to_dolistapp.ui.theme.PrimaryPurple
 import com.example.to_dolistapp.ui.theme.TextSecondary
 import com.example.to_dolistapp.ui.theme.White
+import com.example.to_dolistapp.viewmodel.AddTaskViewModel
 
 @Composable
 fun MyNavigation()
 {
     val navController = rememberNavController()
+    val addTaskViewModel: AddTaskViewModel = viewModel()
 
     val currentStackBack = navController.currentBackStackEntryAsState()
     val currentRoute = currentStackBack.value?.destination?.route
@@ -197,7 +200,7 @@ fun MyNavigation()
             }
             composable("addTask")
             {
-                AddTaskScreen(navController)
+                AddTaskScreen(navController,addTaskViewModel)
             }
         }
     }
