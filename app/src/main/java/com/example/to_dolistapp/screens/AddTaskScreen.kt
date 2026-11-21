@@ -221,13 +221,13 @@ fun AddTaskScreen(navController: NavController,viewModel: AddTaskViewModel)
 
                     Row(modifier = Modifier.fillMaxWidth().height(40.dp).
                     padding(start = 16.dp, end = 16.dp, top = 4.dp)) {
-                        Priority(Modifier.weight(1f),LOW,SuccessGreen)
+                        Priority(Modifier.weight(1f),LOW,SuccessGreen, viewModel.selectedPriority ==LOW, onClick ={viewModel.onPriorityChange(LOW)})
 
                         Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                        Priority(Modifier.weight(1f),MEDIUM,WarningOrange)
+                        Priority(Modifier.weight(1f),MEDIUM,WarningOrange,viewModel.selectedPriority == MEDIUM, onClick = {viewModel.onPriorityChange(MEDIUM)})
 
                         Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                        Priority(Modifier.weight(1f),HIGH,ErrorRed)
+                        Priority(Modifier.weight(1f),HIGH,ErrorRed,viewModel.selectedPriority==HIGH, onClick = {viewModel.onPriorityChange(HIGH)})
                     }
 
                     HeaderSection("Due Date",R.drawable.calendar)
@@ -372,15 +372,20 @@ fun HeaderSection(text: String,image: Int)
 }
 
 @Composable
-fun Priority(modifier: Modifier,text: String,color: Color)
+fun Priority(modifier: Modifier,text: String,color: Color,isSelected: Boolean,onClick:()-> Unit)
 {
 
     Box(modifier = modifier.fillMaxHeight()
-        .background(color = PrimaryPurple.copy(alpha = 0.15f),
+        .background(color = PrimaryPurple.copy(alpha = if (isSelected) 0.4f else 0.15f),
             shape = RoundedCornerShape(24.dp))
-        .border(width = 2.dp, color = DividerColor, shape = RoundedCornerShape(24.dp))
+        .border(width = 2.dp, color =
+            if (isSelected)
+            {
+                PrimaryPurple
+            }else
+            DividerColor, shape = RoundedCornerShape(24.dp))
         .clickable{
-
+            onClick()
         },
         contentAlignment = Alignment.Center)
     {
